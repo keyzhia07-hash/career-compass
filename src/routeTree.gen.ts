@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CandidaturesRouteImport } from './routes/candidatures'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as EditeurRouteImport } from './routes/editeur'
+import { Route as EmploiRouteImport } from './routes/emploi'
+import { Route as EntreprisesRouteImport } from './routes/entreprises'
+import { Route as ProfilSalaireRouteImport } from './routes/profil-salaire'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CandidaturesRoute = CandidaturesRouteImport.update({
+  id: '/candidatures',
+  path: '/candidatures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditeurRoute = EditeurRouteImport.update({
+  id: '/editeur',
+  path: '/editeur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmploiRoute = EmploiRouteImport.update({
+  id: '/emploi',
+  path: '/emploi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntreprisesRoute = EntreprisesRouteImport.update({
+  id: '/entreprises',
+  path: '/entreprises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfilSalaireRoute = ProfilSalaireRouteImport.update({
+  id: '/profil-salaire',
+  path: '/profil-salaire',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/candidatures': typeof CandidaturesRoute
+  '/documents': typeof DocumentsRoute
+  '/editeur': typeof EditeurRoute
+  '/emploi': typeof EmploiRoute
+  '/entreprises': typeof EntreprisesRoute
+  '/profil-salaire': typeof ProfilSalaireRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/candidatures': typeof CandidaturesRoute
+  '/documents': typeof DocumentsRoute
+  '/editeur': typeof EditeurRoute
+  '/emploi': typeof EmploiRoute
+  '/entreprises': typeof EntreprisesRoute
+  '/profil-salaire': typeof ProfilSalaireRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/candidatures': typeof CandidaturesRoute
+  '/documents': typeof DocumentsRoute
+  '/editeur': typeof EditeurRoute
+  '/emploi': typeof EmploiRoute
+  '/entreprises': typeof EntreprisesRoute
+  '/profil-salaire': typeof ProfilSalaireRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/candidatures'
+    | '/documents'
+    | '/editeur'
+    | '/emploi'
+    | '/entreprises'
+    | '/profil-salaire'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/candidatures'
+    | '/documents'
+    | '/editeur'
+    | '/emploi'
+    | '/entreprises'
+    | '/profil-salaire'
+  id:
+    | '__root__'
+    | '/'
+    | '/candidatures'
+    | '/documents'
+    | '/editeur'
+    | '/emploi'
+    | '/entreprises'
+    | '/profil-salaire'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CandidaturesRoute: typeof CandidaturesRoute
+  DocumentsRoute: typeof DocumentsRoute
+  EditeurRoute: typeof EditeurRoute
+  EmploiRoute: typeof EmploiRoute
+  EntreprisesRoute: typeof EntreprisesRoute
+  ProfilSalaireRoute: typeof ProfilSalaireRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/candidatures': {
+      id: '/candidatures'
+      path: '/candidatures'
+      fullPath: '/candidatures'
+      preLoaderRoute: typeof CandidaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/editeur': {
+      id: '/editeur'
+      path: '/editeur'
+      fullPath: '/editeur'
+      preLoaderRoute: typeof EditeurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emploi': {
+      id: '/emploi'
+      path: '/emploi'
+      fullPath: '/emploi'
+      preLoaderRoute: typeof EmploiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entreprises': {
+      id: '/entreprises'
+      path: '/entreprises'
+      fullPath: '/entreprises'
+      preLoaderRoute: typeof EntreprisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profil-salaire': {
+      id: '/profil-salaire'
+      path: '/profil-salaire'
+      fullPath: '/profil-salaire'
+      preLoaderRoute: typeof ProfilSalaireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CandidaturesRoute: CandidaturesRoute,
+  DocumentsRoute: DocumentsRoute,
+  EditeurRoute: EditeurRoute,
+  EmploiRoute: EmploiRoute,
+  EntreprisesRoute: EntreprisesRoute,
+  ProfilSalaireRoute: ProfilSalaireRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
